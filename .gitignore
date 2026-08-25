@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+*.env
+
+# Local databases
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE files
+.idea/
+.vscode/
+
+# macOS files
+.DS_Store
+__MACOSX/
+
+# Jupyter
+.ipynb_checkpoints/
