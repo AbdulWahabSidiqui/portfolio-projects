@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Stock Market Analytics</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <h1>Stock Market Analytics</h1>
+
+        <p class="subtitle">
+            Search for a stock to see its latest market data.
+        </p>
+
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="symbol"
+                placeholder="Enter stock symbol"
+                required
+            >
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+
+        {% if stock %}
+
+            <div class="stock-card">
+
+                <h2>{{ stock.symbol }}</h2>
+
+                <p class="date">
+                    Trading Date: {{ stock.date }}
+                </p>
+
+
+                <div class="data-grid">
+
+                    <div class="data-item">
+                        <span>Open</span>
+                        <strong>${{ stock.open }}</strong>
+                    </div>
+
+
+                    <div class="data-item">
+                        <span>High</span>
+                        <strong>${{ stock.high }}</strong>
+                    </div>
+
+
+                    <div class="data-item">
+                        <span>Low</span>
+                        <strong>${{ stock.low }}</strong>
+                    </div>
+
+
+                    <div class="data-item">
+                        <span>Close</span>
+                        <strong>${{ stock.close }}</strong>
+                    </div>
+
+
+                    <div class="data-item">
+                        <span>Volume</span>
+                        <strong>{{ stock.volume }}</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
