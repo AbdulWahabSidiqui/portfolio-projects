@@ -1,0 +1,168 @@
+:root {
+    --primary: #14b8a6;
+    --primary-dark: #0f766e;
+    --dark: #111827;
+    --muted: #6b7280;
+    --light: #f8fafc;
+    --border: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--light);
+    color: var(--dark);
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.navbar-custom {
+    background: white;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--dark);
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.brand span {
+    color: var(--primary);
+}
+
+.nav-link-custom {
+    color: var(--muted);
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.nav-link-custom:hover {
+    color: var(--primary);
+}
+
+.hero {
+    padding: 80px 0;
+    background: linear-gradient(
+        135deg,
+        #ecfeff 0%,
+        #f8fafc 55%,
+        white 100%
+    );
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    max-width: 600px;
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+.btn-primary-custom {
+    background: var(--primary);
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 12px 22px;
+    border-radius: 10px;
+}
+
+.btn-primary-custom:hover {
+    background: var(--primary-dark);
+    color: white;
+}
+
+.search-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.product-card {
+    height: 100%;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.product-image {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    background: #f1f5f9;
+}
+
+.product-content {
+    padding: 20px;
+}
+
+.product-category {
+    color: var(--primary-dark);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.product-title {
+    font-weight: 750;
+    margin-top: 6px;
+}
+
+.product-description {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.product-price {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.stock {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.section-title {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.footer {
+    margin-top: 80px;
+    padding: 35px 0;
+    background: var(--dark);
+    color: #cbd5e1;
+}
+
+.cart-badge {
+    background: var(--primary);
+    color: white;
+    border-radius: 999px;
+    padding: 2px 7px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.customer-link:hover {
+    text-decoration: underline !important;
+}

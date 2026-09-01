@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Order #{{ order.id }} | Vertex Store</title>
+    <link
+    rel="icon"
+    type="image/png"
+    href="{{ url_for('static', filename='images/logo.png') }}"
+>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        href="{{ url_for('static', filename='css/style.css') }}"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-custom">
+
+    <div class="container py-2">
+
+        <a
+            href="{{ url_for('main.home') }}"
+            class="brand"
+        >
+            Vertex<span>.</span>
+        </a>
+
+        <div class="d-flex gap-2">
+
+            <a
+                href="{{ url_for('main.admin_dashboard') }}"
+                class="btn btn-outline-dark"
+            >
+                Admin Dashboard
+            </a>
+
+            <a
+                href="{{ url_for('main.logout') }}"
+                class="btn btn-dark"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main class="container py-5">
+
+    <a
+        href="{{ url_for('main.admin_dashboard') }}"
+        class="text-decoration-none text-dark"
+    >
+        ← Back to Admin Dashboard
+    </a>
+
+
+    <div class="mt-4 mb-5">
+
+        <p class="product-category mb-1">
+            Order Details
+        </p>
+
+        <h1 class="fw-bold">
+            Order #{{ order.id }}
+        </h1>
+
+        <p class="text-muted">
+            {{ order.created_at.strftime("%B %d, %Y at %I:%M %p") }}
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <div class="col-md-8">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h4 class="fw-bold mb-4">
+                        Products
+                    </h4>
+
+
+                    {% for item in order.items %}
+
+                    <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+
+                        <div>
+
+                            <strong>
+                                {{ item.product.name }}
+                            </strong>
+
+                            <div class="text-muted">
+                                {{ item.quantity }} ×
+                                ${{ "%.2f"|format(item.price) }}
+                            </div>
+
+                        </div>
+
+
+                        <strong>
+                            ${{ "%.2f"|format(item.price * item.quantity) }}
+                        </strong>
+
+                    </div>
+
+                    {% endfor %}
+
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <strong>
+                            Total
+                        </strong>
+
+                        <strong class="fs-5">
+                            ${{ "%.2f"|format(order.total_amount) }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="card border-0 shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h4 class="fw-bold mb-4">
+                        Customer
+                    </h4>
+
+                    <p class="mb-2">
+                        <strong>Name:</strong>
+                        {{ order.user.name }}
+                    </p>
+
+                    <p class="mb-4">
+                        <strong>Email:</strong>
+                        {{ order.user.email }}
+                    </p>
+
+
+                    <h4 class="fw-bold mb-3">
+    Order Status
+</h4>
+
+<form
+    method="POST"
+    action="{{ url_for('main.update_order_status', order_id=order.id) }}"
+>
+
+    <select
+        name="status"
+        class="form-select mb-3"
+    >
+
+        <option
+            value="Pending"
+            {% if order.status == "Pending" %}selected{% endif %}
+        >
+            Pending
+        </option>
+
+        <option
+            value="Paid"
+            {% if order.status == "Paid" %}selected{% endif %}
+        >
+            Paid
+        </option>
+
+        <option
+            value="Processing"
+            {% if order.status == "Processing" %}selected{% endif %}
+        >
+            Processing
+        </option>
+
+        <option
+            value="Shipped"
+            {% if order.status == "Shipped" %}selected{% endif %}
+        >
+            Shipped
+        </option>
+
+        <option
+            value="Delivered"
+            {% if order.status == "Delivered" %}selected{% endif %}
+        >
+            Delivered
+        </option>
+
+        <option
+            value="Cancelled"
+            {% if order.status == "Cancelled" %}selected{% endif %}
+        >
+            Cancelled
+        </option>
+
+    </select>
+
+    <button
+        type="submit"
+        class="btn btn-primary-custom w-100"
+    >
+        Update Status
+    </button>
+
+</form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+</body>
+
+</html>
