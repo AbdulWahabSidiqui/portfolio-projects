@@ -18,6 +18,9 @@ instance/
 *.sqlite
 *.sqlite3
 
+# Keep the demo database required by Cafe WiFi Finder
+!cafe-wifi-finder/cafes.db
+
 # IDE files
 .idea/
 .vscode/

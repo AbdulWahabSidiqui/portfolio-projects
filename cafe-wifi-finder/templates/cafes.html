@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}All Cafes{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">All Cafes</h1>
+        <p class="text-muted">
+            Discover the best places to work remotely.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        {% for cafe in cafes %}
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="card h-100 shadow-sm">
+
+                <img src="{{ cafe.img_url }}"
+                     class="card-img-top"
+                     alt="{{ cafe.name }}">
+
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        {{ cafe.name }}
+                    </h4>
+
+                    <p class="text-muted">
+                        <i class="bi bi-geo-alt-fill"></i>
+                        {{ cafe.location }}
+                    </p>
+
+                    <hr>
+
+                    <p>
+
+                        <strong>Seats:</strong>
+                        {{ cafe.seats }}
+
+                    </p>
+
+                    <p>
+
+                        <strong>WiFi:</strong>
+
+                        {% if cafe.has_wifi %}
+                            ✅
+                        {% else %}
+                            ❌
+                        {% endif %}
+
+                    </p>
+
+                    <p>
+
+                        <strong>Sockets:</strong>
+
+                        {% if cafe.has_sockets %}
+                            ✅
+                        {% else %}
+                            ❌
+                        {% endif %}
+
+                    </p>
+
+                    <p>
+
+                        <strong>Calls:</strong>
+
+                        {% if cafe.can_take_calls %}
+                            ✅
+                        {% else %}
+                            ❌
+                        {% endif %}
+
+                    </p>
+
+                    <p>
+
+                        <strong>Coffee:</strong>
+
+                        {{ cafe.coffee_price }}
+
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-white border-0">
+
+                    <a href="{{ cafe.map_url }}"
+                       target="_blank"
+                       class="btn btn-success w-100">
+
+                        View on Map
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

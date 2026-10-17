@@ -1,0 +1,54 @@
+body{
+    background:#F8FAFC;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.navbar{
+    background:#0F172A !important;
+}
+
+.navbar-brand{
+    color:#2DD4BF !important;
+}
+
+.btn-success{
+    background:#2DD4BF;
+    border:none;
+}
+
+.btn-success:hover{
+    background:#14B8A6;
+}
+
+h1{
+    color:#0F172A;
+}
+
+.lead{
+    color:#475569;
+}
+.card{
+    border: none;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.15);
+}
+
+.card img{
+    height: 240px;
+    object-fit: cover;
+}
+
+.card-title{
+    color:#0F172A;
+    font-weight:700;
+}
+
+.card-footer{
+    padding:1rem;
+}

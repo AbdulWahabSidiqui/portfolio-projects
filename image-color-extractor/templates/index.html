@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Image Color Extractor</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>Image Color Extractor</h1>
+
+        <p>
+            Upload an image and discover its 10 most common colors.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <input
+                type="file"
+                name="image"
+                accept="image/*"
+                required
+            >
+
+            <button type="submit">
+                Extract Colours
+            </button>
+
+        </form>
+{% if colors %}
+
+    <section class="results">
+
+        <h2>Top 10 Most Common Colours</h2>
+
+        <div class="color-grid">
+
+            {% for color in colors %}
+
+                <div class="color-card">
+
+                    <div
+                        class="color-preview"
+                        style="background-color: {{ color.hex }};"
+                    ></div>
+
+                    <div class="color-info">
+
+                        <h3>{{ color.hex }}</h3>
+
+                        <p>
+                            RGB:
+                            {{ color.rgb[0] }},
+                            {{ color.rgb[1] }},
+                            {{ color.rgb[2] }}
+                        </p>
+
+                        <p>
+                            Pixels: {{ color.count }}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+{% endif %}
+    </main>
+
+</body>
+</html>
